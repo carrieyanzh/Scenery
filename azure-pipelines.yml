@@ -18,11 +18,16 @@ stages:
     pool:
       name: self-raspberry0201
     steps:
-      - task: Docker@2
-        displayName: Build an image
-        inputs:
-          command: 'build'
-          Dockerfile: '**/Dockerfile'
-          tags: '$(tag)'
+   #   - task: Docker@2
+   #     displayName: Build an image
+   #     inputs:
+   #       command: 'build'
+   #       Dockerfile: '**/Dockerfile'
+   #       tags: '$(tag)'
 
-  
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'mydocker0207'
+          repository: 'mycarrie0207/scenery'
+          command: 'buildAndPush'
+          Dockerfile: '**/Dockerfile'
